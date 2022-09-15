@@ -35,7 +35,7 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   </summary><br>
   
   - Este projeto é individual;
-  - São `X` dias de projeto;
+  - São `3` dias de projeto;
   - Data de entrega para avaliação final do projeto: `23/09/2022 13:50`.
 
 </details>
