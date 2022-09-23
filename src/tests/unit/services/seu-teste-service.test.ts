@@ -1,22 +1,22 @@
 // template para criação dos testes de cobertura da camada de service
 
 
-// import * as sinon from 'sinon';
-// import chai from 'chai';
-// const { expect } = chai;
+import * as sinon from 'sinon';
+import chai from 'chai';
+const { expect } = chai;
 
-// describe('Sua descrição', () => {
+describe('Services', () => {
 
-//   before(async () => {
-//     sinon
-//       .stub()
-//       .resolves();
-//   });
+  before(async () => {
+    sinon
+      .stub()
+      .resolves();
+  });
 
-//   after(()=>{
-//     sinon.restore();
-//   })
+  after(()=>{
+    sinon.restore();
+  })
 
-//   it('', async () => {});
+  it('', async () => {});
 
-// });
+});

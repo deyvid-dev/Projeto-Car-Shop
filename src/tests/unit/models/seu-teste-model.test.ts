@@ -1,22 +1,22 @@
 // template para criação dos testes de cobertura da camada de model
 
 
-// import * as sinon from 'sinon';
-// import chai from 'chai';
-// const { expect } = chai;
+import * as sinon from 'sinon';
+import chai from 'chai';
+const { expect } = chai;
 
-// describe('Sua descrição', () => {
+describe('Models', () => {
 
-//   before(async () => {
-//     sinon
-//       .stub()
-//       .resolves();
-//   });
+  before(async () => {
+    sinon
+      .stub()
+      .resolves();
+  });
 
-//   after(()=>{
-//     sinon.restore();
-//   })
+  after(()=>{
+    sinon.restore();
+  })
 
-//   it('', async () => {});
+  it('', async () => {});
 
-// });
+});
