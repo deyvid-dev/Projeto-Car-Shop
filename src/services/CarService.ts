@@ -23,6 +23,12 @@ class CarService implements IService<ICar> {
     if (!result) throw new Error('Error');
     return result;
   }
+
+  public async readOne(_id: string): Promise<ICar> {
+    const result = await this._car.readOne(_id);
+    if (!result) throw Error('Id não encontrado!');
+    return result;
+  }
 }
 
 export default CarService;
