@@ -1,16 +1,12 @@
-// template para criação dos testes de cobertura da camada de controller
-
-
 import * as sinon from 'sinon';
 import chai from 'chai';
 const { expect } = chai;
+import { stub } from 'sinon';
 
 describe('Controllers', () => {
 
   before(async () => {
-    sinon
-      .stub()
-      .resolves();
+    res.status
   });
 
   after(()=>{

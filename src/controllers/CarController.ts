@@ -36,4 +36,18 @@ export default class CarsController {
       next(error);
     }
   }
+
+  public async delete(req: Request, res: Response): Promise<void | Response> {
+    const { id } = req.params;
+    if (id.length !== 24) {
+      return res.status(400).json({ error: 'Id must have 24 hexadecimal characters' });
+    }
+    const result = await this._service.delete(id);
+    console.log(result);
+    
+    if (!result) {
+      return res.status(404).json({ error: 'Object not found' });
+    }
+    res.status(204).json(result);
+  }
 }
