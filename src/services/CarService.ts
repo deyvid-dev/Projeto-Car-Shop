@@ -26,7 +26,7 @@ class CarService implements IService<ICar> {
 
   public async readOne(_id: string): Promise<ICar> {
     const result = await this._car.readOne(_id);
-    if (!result) throw Error('Object not found');
+    if (!result) throw new Error('Object not found');
     return result;
   }
 }

@@ -1,8 +1,8 @@
 import { ErrorRequestHandler } from 'express';
 import { ZodError } from 'zod';
-import { ErrorTypes, errorCatalog } from './Catolog';
+import { ErrorTypes, errorCatalog, ErrorResponseObject } from './Catolog';
 
-const errorHandle: ErrorRequestHandler = (err: Error | ZodError, req, res, _next) => {
+const errorHandle:ErrorRequestHandler = (err: Error | ZodError | ErrorResponseObject, req, res) => {
   if (err instanceof ZodError) {
     return res.status(400).json({ message: err.issues });
   }
