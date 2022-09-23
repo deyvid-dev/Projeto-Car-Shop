@@ -1,7 +1,6 @@
 import IService from '../interfaces/IService';
 import { ICar, carSchema } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
-import { IError } from '../interfaces/IError';
 // import { ErrorTypes } from '../middlewares/Catolog';
 // import { ErrorTypes } from '../middlewares/Catolog';
 
@@ -27,13 +26,7 @@ class CarService implements IService<ICar> {
     return result;
   }
 
-  public async readOne(_id: string): Promise<ICar | null | IError> {
-    if (_id.length !== 24) {
-      return ({ 
-        error: 'Id must have 24 hexadecimal characters', 
-        statusCode: 400, 
-      });
-    }
+  public async readOne(_id: string): Promise<ICar | null> {
     const result = await this._car.readOne(_id);
     console.log(result);
     return result;
