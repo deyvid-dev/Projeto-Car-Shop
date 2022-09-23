@@ -1,6 +1,7 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import IService from '../interfaces/IService';
 import { ICar } from '../interfaces/ICar';
+// import { IError } from '../interfaces/IError';
 // import { ErrorTypes } from '../middlewares/errorsCatalog';
 
 export default class CarsController {
@@ -19,9 +20,20 @@ export default class CarsController {
     return res.status(200).json(result);
   }
 
-  public async readOne(req: Request, res: Response) {
-    const { id } = req.params;
-    const result = await this._service.readOne(id);
-    return res.status(200).json(result);
+  public async readOne(req: Request, res: Response, next: NextFunction): Promise<void | Response> {
+    try {
+      const { id } = req.params;
+      if (id.length !== 24) {
+        return res.status(400).json({ error: 'Id must have 24 hexadecimal characters' });
+      }
+      const result = await this._service.readOne(id);
+      console.log(result);
+      if (!result) {
+        return res.status(404).json({ error: 'Object not found' });
+      }
+      return res.status(200).json(result);
+    } catch (error) {
+      next(error);
+    }
   }
 }

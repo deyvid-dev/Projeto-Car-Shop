@@ -6,11 +6,11 @@ import CarController from '../controllers/CarController';
 const route = Router();
 
 const cars = new CarModel();
-const carsService = new CarService(cars);
-const carsController = new CarController(carsService);
+const carService = new CarService(cars);
+const carController = new CarController(carService);
 
-route.post('/', (req, res) => carsController.create(req, res));
-route.get('/', (req, res) => carsController.read(req, res));
-route.get('/:id', (req, res) => carsController.readOne(req, res));
+route.post('/', (req, res) => carController.create(req, res));
+route.get('/', (req, res) => carController.read(req, res));
+route.get('/:id', (req, res, next) => carController.readOne(req, res, next));
 
 export default route;
