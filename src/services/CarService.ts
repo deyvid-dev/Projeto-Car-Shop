@@ -18,8 +18,8 @@ class CarService implements IService<ICar> {
     return this._car.create(obj);
   }
 
-  public async readOne(_id: string): Promise<ICar> {
-    const result = await this._car.readOne(_id);
+  public async read(): Promise<ICar[]> {
+    const result = await this._car.read();
     if (!result) throw new Error('Error');
     return result;
   }
