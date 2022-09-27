@@ -25,8 +25,8 @@ abstract class GModel<T> implements IModel<T> {
   }
 
   public async delete(_id: string): Promise<T | null> {
-    await this._model.deleteOne({ _id });
-    return null;
+    const result = await this._model.findByIdAndDelete(_id);
+    return result;
   }
 
   public async update(_id: string): Promise<T | null> {

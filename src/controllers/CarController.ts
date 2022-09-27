@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import IService from '../interfaces/IService';
 import { ICar } from '../interfaces/ICar';
-// import { IError } from '../interfaces/IError';
-// import { ErrorTypes } from '../middlewares/errorsCatalog';
 
 export default class CarsController {
   constructor(private _service: IService<ICar>) { }
@@ -45,9 +43,8 @@ export default class CarsController {
     const result = await this._service.delete(id);
     console.log(result);
     
-    if (!result) {
-      return res.status(404).json({ error: 'Object not found' });
-    }
-    res.status(204).json(result);
+    if (!result && id.length === 24) return res.status(404).json({ error: 'Object not found' });
+
+    res.status(204).end();
   }
 }

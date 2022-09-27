@@ -2,7 +2,6 @@ import IService from '../interfaces/IService';
 import { ICar, carSchema } from '../interfaces/ICar';
 import { IModel } from '../interfaces/IModel';
 // import { ErrorTypes } from '../middlewares/Catolog';
-// import { ErrorTypes } from '../middlewares/Catolog';
 
 class CarService implements IService<ICar> {
   private _car: IModel<ICar>;
