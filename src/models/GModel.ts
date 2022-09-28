@@ -1,5 +1,6 @@
-import { isValidObjectId, Model } from 'mongoose';
+import { isValidObjectId, Model, UpdateQuery } from 'mongoose';
 import { IModel } from '../interfaces/IModel';
+import { ErrorTypes } from '../middlewares/Catolog';
 
 abstract class GModel<T> implements IModel<T> {
   protected _model:Model<T>;
@@ -29,9 +30,13 @@ abstract class GModel<T> implements IModel<T> {
     return result;
   }
 
-  public async update(_id: string): Promise<T | null> {
-    await this._model.updateOne({ _id });
-    return null;
+  public async update(_id: string, obj: T): Promise<T | null> {
+    if (!isValidObjectId(_id)) throw Error(ErrorTypes.EntityNotFound);
+    return this._model.findOneAndUpdate(
+      { _id },
+      { ...obj } as UpdateQuery<T>,
+      { new: true },
+    );
   }
 }
 

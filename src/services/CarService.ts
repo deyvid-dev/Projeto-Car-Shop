@@ -35,6 +35,15 @@ class CarService implements IService<ICar> {
     const result = await this._car.delete(_id);
     return result;
   }
+
+  public async update(_id: string, obj: ICar): Promise<ICar | null> {
+    const result = await this._car.update(_id, obj);
+    const parsed = carSchema.safeParse(obj);
+    if (!parsed.success) {
+      throw parsed.error;
+    }
+    return result;
+  }
 }
 
 export default CarService;
