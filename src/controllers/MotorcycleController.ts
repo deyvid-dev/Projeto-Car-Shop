@@ -43,4 +43,16 @@ export default class MotorcycleController {
     }
     res.status(200).json(result);
   }
+
+  public async delete(req: Request, res: Response): Promise<void | Response> {
+    const { id } = req.params;
+    if (id.length !== 24) {
+      return res.status(400).json({ error: this.message });
+    }
+    const result = await this._service.delete(id);
+    if (!result && id.length === 24) {
+      return res.status(404).json({ error: this.messageObj });
+    }
+    res.status(204).end();
+  }
 }
