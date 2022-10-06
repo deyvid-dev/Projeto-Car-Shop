@@ -31,4 +31,16 @@ export default class MotorcycleController {
     }
     return res.status(200).json(result);
   }
+
+  public async update(req: Request, res: Response): Promise<void | Response> {
+    const { id } = req.params;
+    if (id.length !== 24) {
+      return res.status(400).json({ error: this.message });
+    }
+    const result = await this._service.update(id, req.body);
+    if (!result && id.length === 24) {
+      return res.status(404).json({ error: this.messageObj });
+    }
+    res.status(200).json(result);
+  }
 }

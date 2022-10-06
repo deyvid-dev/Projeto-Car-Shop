@@ -9,6 +9,7 @@ const motorcycle = new MotorcycleModel();
 const motorcycleService = new MotorcycleService(motorcycle);
 const motorcycleController = new MotorcycleController(motorcycleService);
 
+route.put('/:id', (req, res) => motorcycleController.update(req, res));
 route.post('/', (req, res) => motorcycleController.create(req, res));
 route.get('/', (req, res) => motorcycleController.read(req, res));
 route.get('/:id', (req, res) => motorcycleController.readOne(req, res));
